@@ -1,7 +1,7 @@
 var $ = jQuery,
      threads = $('.user-recent li'),
      buttonClass = 'toggle-button',
-     button = '<button class="' + buttonClass + '">Hide</button>',
+     button = '<button class="' + buttonClass + '"><span>Hide</span></button>',
      textToShow = 'Show',
      textToHide = 'Hide',
      buttons,
@@ -30,7 +30,6 @@ threads.each(function(i, thread) {
 // Find all thread buttons
 buttons = $('body').find('.' + buttonClass);
 
-
 buttons.on('click', function(event) {
     var thread = $(this).parents('li'),
           button = $(this);
@@ -38,15 +37,18 @@ buttons.on('click', function(event) {
     toggleThread(button, thread, event); 
 });
 
+// Add styles
+style();
+
 /*
  * button = Required - The trigger element
  * thread = Required - The element to toggle
  * event = Optional - Identifying whether the button has been pressed
  */
-
 function toggleThread(button, thread, event) {
     var threadId = thread.attr('id'),
-          threadContent = thread.find('.' + innerClass);
+        threadContent = thread.find('.' + innerClass),
+        buttonText = button.find('span');
 
     // If the thread is visible
     if (localStorage.getItem(threadId) === 'shown') {
@@ -61,19 +63,25 @@ function toggleThread(button, thread, event) {
 		
 		if (event) {
 			// Update the button text
-			button.text(textToShow);
+			buttonText.text(textToShow);
 			
 			// Update local storage
 			localStorage.setItem(threadId, 'hidden');
 
 			// Hide the thread
 			threadContent.hide();
+			
+			// Update button class
+			button.addClass('active');
 		} else {
 			// Update the button text
-			button.text(textToHide);
+			buttonText.text(textToHide);
 			
 			// Show the thread
 			threadContent.show();		
+			
+			// Update button class
+			button.removeClass('active');
 		}
 	}
 	
@@ -81,19 +89,39 @@ function toggleThread(button, thread, event) {
 		
 		if (event) {
 			// Update the button text
-			button.text(textToHide);
+			buttonText.text(textToHide);
 			
 			// Update local storage
 			localStorage.setItem(threadId, 'shown');
 
 			// Show the thread
 			threadContent.show();
+			
+			// Update button class
+			button.removeClass('active');
 		} else {
 			// Update the button text
-			button.text(textToShow);
+			buttonText.text(textToShow);
 			
 			// Hide the thread
 			threadContent.hide();
+			
+			// Update button class
+			button.addClass('active');
 		}
 	}
+}
+
+function style() {
+    var style,
+		  styles,
+		  head = document.getElementsByTagName('head')[0];
+	
+	style = document.createElement('style');
+	style.type = 'text/css';
+
+	styles = '.toggle-button{height:1em;padding:0;position:relative;vertical-align:top;width:1em}.toggle-button:before{content:"x";display:block;line-height:10px;font-size:10px}.toggle-button.active:before{content:"show"}.toggle-button.active{width:auto}.toggle-button span{left:-999em;position:absolute}';
+	
+   style.appendChild(document.createTextNode(styles));
+	head.appendChild(style);
 }
