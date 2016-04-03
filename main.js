@@ -6,6 +6,8 @@
 // @author       anevins
 // @include     *://*.forums.wordpress.org/profile/*
 // @include     *://*wordpress.org/support/profile/*
+// @downloadURL https://github.com/anevins12/Toggle-profile-threads/blob/master/main.js
+// @updateURL https://github.com/anevins12/Toggle-profile-threads/blob/master/main.js
 // ==/UserScript==
 /* jshint -W097 */
 
