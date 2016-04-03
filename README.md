@@ -12,5 +12,9 @@ The functionality to toggle the profile threads is available in the "x" and "sho
 
 Note that this utilises local storage.
 
+### Installation
+1. Install Tampermonkey addon.
+2. Copy and paste the code from 'main.js' into  your Tampermonkey. Save.
+
 ## Browser support
 Lazily developed only for Chome.
