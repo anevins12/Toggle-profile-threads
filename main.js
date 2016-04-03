@@ -1,3 +1,15 @@
+// ==UserScript==
+// @name         Toggle threads on profile page
+// @namespace    http://tampermonkey.net/
+// @version      1.0
+// @description  try to take over the world!
+// @author       anevins
+// @include     *://*.forums.wordpress.org/profile/*
+// @include     *://*wordpress.org/support/profile/*
+// ==/UserScript==
+/* jshint -W097 */
+
+'use strict';
 var $ = jQuery,
 	 target = $('#profile-menu'),
 	 threadButtons,
