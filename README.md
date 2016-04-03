@@ -11,3 +11,6 @@ There's a button to show and hide this functionality. This appears in the profil
 The functionality to toggle the profile threads is available in the "x" and "show" buttons beside each thread. Pressing "x" will hide the thread from view. Pressing "show" will return the thread from view.
 
 Note that this utilises local storage.
+
+## Browser support
+Lazily developed only for Chome.
