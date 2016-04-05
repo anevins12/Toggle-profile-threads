@@ -69,6 +69,10 @@ function toggleThreads() {
             threadId = thread.find('a').attr('href'),
             button = thread.find('.' + buttonClass);
 
+		// Remove the queries from the ID
+		threadId = threadId.split('?');
+		threadId = threadId[0];
+			
         // Add an ID
         thread.attr('id', threadId);
 
